@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.html": "html", // Reconoce el ícono de HTML
+        "*.jinja": "jinja-html", // Archivos con extensión .jinja serán Jinja2
+        "*.html.j2": "jinja-html" // Alternativa para plantillas Jinja con extensión combinada
+    },
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "material-icon-theme.files.associations": {
+        "*.html": "html", // Archivos .html normales
+        "*.jinja": "html", // Forzamos ícono de HTML
+        "*.html.j2": "html" // Alternativa para plantillas Jinja
+    }
+}

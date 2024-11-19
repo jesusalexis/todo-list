@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<!-- <p>Total Tareas: {{ total_todos }}</p>
+<p>Pending Tareas: {{ pending_todos }}</p>
+<p>Success Tareas: {{ success_todos }}</p> -->
+<div class="container-sm text-center">
+
+    <h1 class="display-3">Bienvenido a nuestra lista de tareas</h1>
+
+    <div class="container mt-5">
+        <h1 class="text-center">¡Bienvenido, {{ user.username }}!</h1>
+        <p class="text-center">Aquí tienes un resumen de tus tareas: {{ total_todos }}</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card-header">Tareas Completadas</div>
+                    <div class="card-body">
+                        <h2 class="card-title text-white">{{ success_todos }}</h2>
+                        <p class="card-text">Tareas que ya has finalizado. ¡Buen trabajo!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card text-white bg-warning mb-3">
+                    <div class="card-header">Tareas Pendientes</div>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ pending_todos }}</h2>
+                        <p class="card-text">Tareas que aún están pendientes por completar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center mt-5">
+
+        <!-- Mensaje Motivacional -->
+        <div class="mt-5">
+            <p class="lead text-muted">"Organiza tu día, una tarea a la vez."</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

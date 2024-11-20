@@ -59,3 +59,17 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('todo.index'))
     
+@bp.route('/home')
+@login_required
+def home():
+    user = g.user
+
+    total_todos = Todo.query.filter_by(created_by=user.id).count()
+    # Contar las tareas del usuario actual
+    success_todos = Todo.query.filter_by(created_by=user.id, state=True).count()
+    pending_todos = Todo.query.filter_by(created_by=user.id, state=False).count()
+
+    print(f"Total Tareas: {success_todos}")
+    print(f"Tareas Pendientes: {pending_todos}")
+
+    return render_template('todo/home.html', user=user, success_todos=success_todos, pending_todos=pending_todos,total_todos = total_todos)

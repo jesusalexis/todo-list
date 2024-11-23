@@ -1,20 +1,28 @@
 from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
+import config
+
+from flask_mysqldb import MySQL
+
 
 db = SQLAlchemy() #crea la instancia de sqlalchemy
 
 def create_app():
     app = Flask(__name__)  # 1. Se crea una instancia de Flask
 
-    #configuracion del proyecto
-    app.config.from_mapping(
-        DEBUG = True,   # 2. Activa el modo depuración
-        SECRET_KEY = 'dev',  # 3. Clave secreta utilizada para sesiones seguras y formularios
-        SQLALCHEMY_DATABASE_URI = "sqlite:///todolist.db" # se crea base de datos
-    )
-  
+    # #configuracion del proyecto
+    # app.config.from_mapping(
+    #     DEBUG = True,   # 2. Activa el modo depuración
+    #     SECRET_KEY = 'dev',  # 3. Clave secreta utilizada para sesiones seguras y formularios
+    #     SQLALCHEMY_DATABASE_URI = "sqlite:///todolist.db" # se crea base de datos
+    # )
+    #app.config['SECRET_KEY'] = config.HEX_SEC_KEY
+
+    #app.config.from_pyfile('../config.py')
+    app.config.from_object(config)
 
     db.init_app(app) #asocia la instancia de sqlalchemy a la aplicacion flask
+    #print("Conectado a la base de datos:", app.config["SQLALCHEMY_DATABASE_URI"])
 
     #registrar Blueprint
     from . import todo

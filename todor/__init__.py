@@ -2,10 +2,13 @@ from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
 import config
 
+from flask_migrate import Migrate
+
 from flask_mysqldb import MySQL
 
 
 db = SQLAlchemy() #crea la instancia de sqlalchemy
+migrate = Migrate()  # Instancia de Flask-Migrate
 
 def create_app():
     app = Flask(__name__)  # 1. Se crea una instancia de Flask
@@ -21,8 +24,11 @@ def create_app():
     #app.config.from_pyfile('../config.py')
     app.config.from_object(config)
 
+    # Asociar SQLAlchemy y Flask-Migrate a la aplicación
     db.init_app(app) #asocia la instancia de sqlalchemy a la aplicacion flask
     #print("Conectado a la base de datos:", app.config["SQLALCHEMY_DATABASE_URI"])
+    migrate.init_app(app, db) 
+
 
     #registrar Blueprint
     from . import todo

@@ -10,6 +10,7 @@ config.py
 # Archivos de bases de datos locales
 *.sqlite3
 *.db
+migrations/
 
 # Archivos compilados de Python
 *.pyc

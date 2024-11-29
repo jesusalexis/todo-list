@@ -4,11 +4,19 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(20), unique = True, nullable = False)
     password = db.Column(db.Text, nullable = False)
+    email = db.Column(db.String(120), unique=True, nullable=False)  # Nuevo campo email
+    name = db.Column(db.Text)
+    lastname = db.Column(db.Text)
+    address = db.Column(db.Text)
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, email, name, lastname, address):
         self.username = username
         self.password = password
-    
+        self.email = email  # Asigna el correo electrónico
+        self.name = name
+        self.lastname = lastname
+        self.address = address
+
     def __repr__(self):
         return f'<User: {self.username} >'
     

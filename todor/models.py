@@ -4,13 +4,13 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(20), unique = True, nullable = False)
     password = db.Column(db.Text, nullable = False)
-    email = db.Column(db.String(120), unique=True, nullable=False)  # Nuevo campo email
+    email = db.Column(db.String(254), unique=True, nullable=False)  # Nuevo campo email
     name = db.Column(db.String(80))
     lastname = db.Column(db.String(80))
     address = db.Column(db.String(80))
     gender = db.Column(db.String(10))  
     language = db.Column(db.String(50))  
-    birthday = db.Column(db.DateTime)  
+    birthday = db.Column(db.Date)  
 
     def __init__(self, username, password, email, name, lastname, address, gender, language, birthday):
         self.username = username

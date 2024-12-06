@@ -38,6 +38,9 @@ def create_app():
     from . import auth
     app.register_blueprint(auth.bp)
 
+    from . import user # el blueprint debe tener el mismo nombre del archivo referencia a bp = Blueprint('user', __name__, url_prefix='/user')
+    app.register_blueprint(user.bp)
+
 
     # @app.route('/')  # 4. Define la ruta raíz del proyecto ('/')
     # def index():

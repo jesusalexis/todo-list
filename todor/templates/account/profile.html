@@ -5,20 +5,95 @@
 {% block content %}
 
 <div class="container-sm text-center">
-    <h1 class="display-3">Bienvenido a nuestra lista de tareas</h1>
+  <h1 class="display-3">Bienvenido a nuestra lista de tareas</h1>
 
-    <p class="lead">Aqui puedes llevar un registro de todas tus tareas y tener una vista general de tus
-        responsabilidades.</p>
+  <p class="lead">Aqui puedes llevar un registro de todas tus tareas y tener una vista general de tus
+    responsabilidades.</p>
 
-    <hr class="my-4">
+  <div class="container">
+    <h2 class="text-center my-4">Datos de Usuario</h2>
+    <form method="POST" action="{{ url_for('user.edit_user', id=user.id) }}">
+      {{ form.hidden_tag() }}
 
-    <p>¿tienes una cuenta?</p>
+      <!-- Campo Username -->
+      <div class="form-group">
+        <label for="username">Nombre de Usuario</label>
+        {{ form.username(class="form-control", id="username") }}
+        {% for error in form.username.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
 
-    <div class="d-flex justify-content-center">
-        <a href="{{url_for('auth.login')}}" class="btn btn-primary mx-2">Iniciar Sesión</a>
-        <a href="{{url_for('auth.register')}}" class="btn btn-secondary mx-2">Registrarse</a>
+      <!-- Campo Email -->
+      <div class="form-group">
+        <label for="email">Correo Electrónico</label>
+        {{ form.email(class="form-control", id="email") }}
+        {% for error in form.email.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
 
-    </div>
+      <!-- Campo Name -->
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        {{ form.name(class="form-control", id="name") }}
+        {% for error in form.name.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Campo Lastname -->
+      <div class="form-group">
+        <label for="lastname">Apellido</label>
+        {{ form.lastname(class="form-control", id="lastname") }}
+        {% for error in form.lastname.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Campo Address -->
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        {{ form.address(class="form-control", id="address") }}
+        {% for error in form.address.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Campo Gender -->
+      <div class="form-group">
+        <label for="gender">Género</label>
+        {{ form.gender(class="form-control", id="gender") }}
+        {% for error in form.gender.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Campo Language -->
+      <div class="form-group">
+        <label for="language">Idioma</label>
+        {{ form.language(class="form-control", id="language") }}
+        {% for error in form.language.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Campo Birthday -->
+      <div class="form-group">
+        <label for="birthday">Fecha de Nacimiento</label>
+        {{ form.birthday(class="form-control", id="birthday") }}
+        {% for error in form.birthday.errors %}
+        <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Botones -->
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
 
 
 </div>

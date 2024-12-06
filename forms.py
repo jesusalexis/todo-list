@@ -1,26 +1,12 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField
-from wtforms.validators import DataRequired, Email, Length
+from wtforms import StringField, SubmitField, PasswordField, SelectField, DateField
+from wtforms.validators import DataRequired, Email, Length, Optional
 
 
 class UserForm(FlaskForm):
-    name = StringField('Nombre', validators=[DataRequired(), Length(max=64)])
-    password = PasswordField('Password', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    submit = SubmitField('Registrar')
-
-    username = StringField('Nickname', validators=[DataRequired(), Length(max=20)])
-    password = StringField('Password', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    name = StringField('Nombre', validators=[DataRequired(), Length(max=20)])
-    lastname = StringField('Apellido', validators=[DataRequired(), Length(max=20)])
-    address = StringField('Direccion', validators=[DataRequired(), Length(max=20)])
-    gender = StringField('Genero', validators=[DataRequired(), Length(max=20)]) 
-    language = StringField('Idioma', validators=[DataRequired(), Length(max=20)])
-    birthday = StringField('Cumple', validators=[DataRequired(), Length(max=20)])
 
     username = StringField(
-        'Username', 
+        'Nickname', 
         validators=[DataRequired(), Length(min=3, max=20, message="El nombre de usuario debe tener entre 3 y 20 caracteres.")]
     )
     password = PasswordField(
@@ -29,7 +15,7 @@ class UserForm(FlaskForm):
     )
     email = StringField(
         'Email', 
-        validators=[DataRequired(), Email(message="Debe ingresar un correo electrónico válido.")]
+        validators=[DataRequired(),Length(max=254),  Email(message="Debe ingresar un correo electrónico válido.")]
     )
     name = StringField(
         'Name', 
@@ -48,9 +34,10 @@ class UserForm(FlaskForm):
         choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')], 
         validators=[Optional()]
     )
-    language = StringField(
+    language = SelectField(
         'Language', 
-        validators=[Length(max=50, message="El idioma no debe exceder los 50 caracteres.")]
+        choices=[('ingles', 'Ingles'), ('español', 'Español'), ('frances', 'frances'),('ingles', 'Ingles'), ('español', 'Español'), ('frances', 'frances')], 
+        validators=[Optional()]
     )
     birthday = DateField(
         'Birthday', 

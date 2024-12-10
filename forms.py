@@ -36,7 +36,7 @@ class UserForm(FlaskForm):
     )
     language = SelectField(
         'Language', 
-        choices=[('ingles', 'Ingles'), ('español', 'Español'), ('frances', 'frances'),('ingles', 'Ingles'), ('español', 'Español'), ('frances', 'frances')], 
+        choices=[('ingles', 'Ingles'), ('español', 'Español'), ('frances', 'frances')], 
         validators=[Optional()]
     )
     birthday = DateField(
@@ -44,5 +44,5 @@ class UserForm(FlaskForm):
         format='%Y-%m-%d', 
         validators=[Optional()]
     )
-    submit = SubmitField('Submit')
+    submit = SubmitField('Registrar')
 

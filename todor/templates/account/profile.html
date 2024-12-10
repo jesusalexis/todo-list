@@ -4,98 +4,102 @@
 
 {% block content %}
 
-<div class="container-sm text-center">
-  <h1 class="display-3">Bienvenido a nuestra lista de tareas</h1>
 
-  <p class="lead">Aqui puedes llevar un registro de todas tus tareas y tener una vista general de tus
-    responsabilidades.</p>
-
-  <div class="container">
+</div>
+<div class="container-fluid my-5">
+  <div class="col-md-8 mx-auto">
     <h2 class="text-center my-4">Datos de Usuario</h2>
     <form method="POST" action="{{ url_for('user.edit_user', id=user.id) }}">
       {{ form.hidden_tag() }}
 
-      <!-- Campo Username -->
-      <div class="form-group">
-        <label for="username">Nombre de Usuario</label>
-        {{ form.username(class="form-control", id="username") }}
-        {% for error in form.username.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
+      <!-- Agrupación compacta de campos -->
+      <div class="row mb-3">
+        <!-- Campo Username -->
+        <div class="col-md-6">
+          {{ form.username.label(class="form-label") }}
+          {{ form.username(class="form-control", id="username") }}
+          {% for error in form.username.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
+
+        <!-- Campo Email -->
+        <div class="col-md-6">
+          {{ form.email.label(class="form-label") }}
+          {{ form.email(class="form-control", id="email") }}
+          {% for error in form.email.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
       </div>
 
-      <!-- Campo Email -->
-      <div class="form-group">
-        <label for="email">Correo Electrónico</label>
-        {{ form.email(class="form-control", id="email") }}
-        {% for error in form.email.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
+      <div class="row mb-3">
+        <!-- Campo Name -->
+        <div class="col-md-6">
+          {{ form.name.label(class="form-label") }}
+          {{ form.name(class="form-control", id="name") }}
+          {% for error in form.name.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
+
+        <!-- Campo Lastname -->
+        <div class="col-md-6">
+          {{ form.lastname.label(class="form-label") }}
+          {{ form.lastname(class="form-control", id="lastname") }}
+          {% for error in form.lastname.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
       </div>
 
-      <!-- Campo Name -->
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        {{ form.name(class="form-control", id="name") }}
-        {% for error in form.name.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
+      <div class="row mb-3">
+        <!-- Campo Address -->
+        <div class="col-md-12">
+          {{ form.address.label(class="form-label") }}
+          {{ form.address(class="form-control", id="address") }}
+          {% for error in form.address.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
       </div>
 
-      <!-- Campo Lastname -->
-      <div class="form-group">
-        <label for="lastname">Apellido</label>
-        {{ form.lastname(class="form-control", id="lastname") }}
-        {% for error in form.lastname.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
+      <div class="row mb-3">
+        <!-- Campo Gender -->
+        <div class="col-md-4">
+          {{ form.gender.label(class="form-label") }}
+          {{ form.gender(class="form-control", id="gender") }}
+          {% for error in form.gender.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
+
+        <!-- Campo Language -->
+        <div class="col-md-4">
+          {{ form.language.label(class="form-label") }}
+          {{ form.language(class="form-control", id="language") }}
+          {% for error in form.language.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
+
+        <!-- Campo Birthday -->
+        <div class="col-md-4">
+          {{ form.birthday.label(class="form-label") }}
+          {{ form.birthday(class="form-control", id="birthday") }}
+          {% for error in form.birthday.errors %}
+          <small class="text-danger">{{ error }}</small>
+          {% endfor %}
+        </div>
       </div>
 
-      <!-- Campo Address -->
-      <div class="form-group">
-        <label for="address">Dirección</label>
-        {{ form.address(class="form-control", id="address") }}
-        {% for error in form.address.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
-      </div>
-
-      <!-- Campo Gender -->
-      <div class="form-group">
-        <label for="gender">Género</label>
-        {{ form.gender(class="form-control", id="gender") }}
-        {% for error in form.gender.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
-      </div>
-
-      <!-- Campo Language -->
-      <div class="form-group">
-        <label for="language">Idioma</label>
-        {{ form.language(class="form-control", id="language") }}
-        {% for error in form.language.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
-      </div>
-
-      <!-- Campo Birthday -->
-      <div class="form-group">
-        <label for="birthday">Fecha de Nacimiento</label>
-        {{ form.birthday(class="form-control", id="birthday") }}
-        {% for error in form.birthday.errors %}
-        <small class="text-danger">{{ error }}</small>
-        {% endfor %}
-      </div>
 
       <!-- Botones -->
-      <div class="form-group text-center">
+      <div class="text-center mt-4">
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        <a href="" class="btn btn-secondary">Cancelar</a>
+        <a href="#" class="btn btn-secondary">Cancelar</a>
       </div>
     </form>
   </div>
-
-
 </div>
-
 {% endblock %}

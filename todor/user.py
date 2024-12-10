@@ -15,11 +15,11 @@ def edit_user(id):
     user = User.query.get_or_404(id)
     form = UserForm(obj=user)  # Carga los datos del usuario en el formulario
     
-    # if form.validate_on_submit():
+    # if form.validate_on_submit(): 
     #     # Actualizar los datos del usuario
     #     form.populate_obj(user)
     #     db.session.commit()
     #   #  flash("Usuario actualizado correctamente.", "success")
-    #     return redirect(url_for('user.list_users'))  # Cambia según tus rutas
+    #     return redirect(url_for('user.list_users'))  # Cambia según tus rutas user=user
     
     return render_template('account/profile.html', form=form, user=user)

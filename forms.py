@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, Email, Length, Optional
 class UserForm(FlaskForm):
 
     username = StringField(
-        'Nickname', 
+        'Nickname:', 
         validators=[DataRequired(), Length(min=3, max=20, message="El nombre de usuario debe tener entre 3 y 20 caracteres.")]
     )
     password = PasswordField(
